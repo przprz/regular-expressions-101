@@ -10,5 +10,5 @@ Presentation:
 ```
 
 ```
-    marp --pdf regex101.md # convert to pdf
+    marp --allow-local-files --pdf regex101.md # convert to pdf
 ```

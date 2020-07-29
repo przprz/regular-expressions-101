@@ -242,7 +242,7 @@ https://stackoverflow.com/questions/201323/how-to-validate-an-email-address-usin
  
 https://regex101.com/r/70ARRh/3
 
-![ regex-email ]( images/regex-email.png )
+![]( images/regex-email.png )
 
 ---
 
@@ -265,7 +265,7 @@ https://github.com/AIrHelp/ah-skynet/blob/e8afa9087b19dce5a4596eb41c9d24c0734002
 
 # Can be used in IDE to search & replace
 IDE will highlight matches so you can test if your regex works as expected. 
-![ regex-db-output ]( images/regex-db-output.png )
+![]( images/regex-db-output.png )
 
 ---
            
