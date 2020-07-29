@@ -111,56 +111,56 @@ Negations:
 
 ---
 
-# Syntax: quantifiers (*, +, ? and {})
+# Syntax: quantifiers (`*`, `+`, `?` and `{}`)
 
-  `abc*`        matches a string that has ab followed by zero or more c's
+  `abc*`        matches a string that has `ab` followed by zero or more `c`'s
   
-  `abc+`        matches a string that has ab followed by one or more c's
+  `abc+`        matches a string that has `ab` followed by one or more `c`'s
   
-  `abc?`       matches a string that has ab followed by zero or one c's
+  `abc?`       matches a string that has `ab` followed by zero or one `c`'s
   
-  `abc{2}`      matches a string that has ab followed by 2 c's
+  `abc{2}`      matches a string that has `ab` followed by 2 `c`'s
   
-  `abc{2,}`     matches a string that has ab followed by 2 or more c's
+  `abc{2,}`     matches a string that has `ab` followed by 2 or more `c`'s
   
-  `abc{2,5}`    matches a string that has ab followed by 2 up to 5 c's
+  `abc{2,5}`    matches a string that has `ab` followed by 2 up to 5 `c`'s
   
-  `a(bc)*`      matches a string that has a followed by zero or more copies of the sequence bc
+  `a(bc)*`      matches a string that has `a` followed by zero or more copies of the sequence `bc`
   
-  `a(bc){2,5}`  matches a string that has a followed by 2 up to 5 copies of the sequence bc
+  `a(bc){2,5}`  matches a string that has `a` followed by 2 up to 5 copies of the sequence `bc`
   
 ---
 
-# Syntax: anchors (^ and $)
+# Syntax: anchors (`^` and `$`)
 
-`^The`        matches any string that starts with The
+`^The`        matches any string that starts with `The`
 
-`end$`        matches a string that ends with end
+`end$`        matches a string that ends with `end`
 
-`^The end$`   exact string match (starts and ends with The end)
+`^The end$`   exact string match (starts and ends with `The end`)
 
-`roar`        matches any string that has the text roar in it
+`roar`        matches any string that has the text `roar` in it
 
 ---
 
-# Syntax: OR operator (| or []), negation operator
+# Syntax: *or* operator (| or []), negation operator
 
-`a(b|c)`     matches a string that has a followed by b or c (and captures b or c) 
+`a(b|c)`     matches a string that has `a` followed by `b` or `c` (and captures `b` or `c`) 
 
-`a[bc]`      same as previous, but without capturing b or c
+`a[bc]`      same as previous, but without capturing `b` or `c`
 
 Example usages:
 
-`[abc]`            matches a string that has either an a or a b or a c -> is the same as a|b|c
+`[abc]`            matches a string that has either an `a` or a `b` or a `c` -> is the same as `a|b|c`
 
 `[a-c]`            same as previous, but with range operator `-`
 
 `[a-fA-F0-9]`      a string that represents a single hexadecimal digit, case insensitively 
 
-`[0-9]%`           a string that has a character from 0 to 9 before a % sign
+`[0-9]%`           a string that has a character from `0` to `9` before a `%` sign
 
 Negation operator:
-`[^a-zA-Z]`        a string that has not a letter from a to z or from A to Z. In this case the ^ is used as **negation** of the expression
+`[^a-zA-Z]`        a string that has not a letter from `a` to `z` or from `A` to `Z`. In this case the `^` is used as **negation** of the expression
 
 ---
 
@@ -168,25 +168,25 @@ Negation operator:
 
 Most popular:
 
-`g` (global) does not return after the first match, restarting the subsequent searches from the end of the previous match
+`g` - *global* - does not return after the first match, restarting the subsequent searches from the end of the previous match
 
-`m` (multi-line) when enabled ^ and $ will match the start and end of a line, instead of the whole string
+`m` - *multi-line* - when enabled `^` and `$` will match the start and end of a line, instead of the whole string
 
-`i` (insensitive) makes the whole expression case-insensitive (for instance /aBc/i would match AbC)
+`i` - *insensitive* - makes the whole expression case-insensitive (for instance `/aBc/i` would match `AbC`)
 
 ##### Caveat: 
 
-Flags are language-specific, e.g. in PHP you use `s` to enable multi-line mode. 
+Flags are **language-specific**, e.g. in PHP you use `s` to enable multi-line mode. 
 
 ---
 
 # Syntax: grouping and capturing: `()`
 
-`a(bc)`           parentheses create a capturing group with value bc
+`a(bc)`           parentheses create a capturing group with value `bc`
 
-`a(?:bc)*`        using ?: we disable the capturing group, so here the match object will *not* contain `bc`
+`a(?:bc)*`        using `?:` we disable the capturing group, so here the match object will *not* contain `bc`
 
-`a(?<foo>bc)`     using ?<foo> we put a name to the group
+`a(?<foo>bc)`     using `?<foo>` we put a name to the group
 
 ---
 
@@ -212,19 +212,20 @@ https://regex101.com/r/cO8lqs/24
 ---
 
 # Syntax: back-references - `\1` (`\2` and so on)
-`([abc])\1`              using \1 it matches the same text that was matched by the first capturing group 
+`([abc])\1`              using `\1` it matches the same text that was matched by the first capturing group 
 
-`([abc])([de])\2\1`      we can use \2 (\3, \4, etc.) to identify the same text that was matched by the second (third, fourth, etc.) capturing group 
+`([abc])([de])\2\1`      we can use `\2` (`\3`,`\4` etc.) to identify the same text that was matched by the second (third, fourth, etc.) capturing group 
 
-`(?<foo>[abc])\k<foo>`   we put the name foo to the group and we reference it later (\k<foo>). The result is the same of the first regex 
+`(?<foo>[abc])\k<foo>`   we add the name foo to the group and we reference it later (`\k<foo>`). 
+The result is the same as in the first regex.
 
 ---
 
 # Syntax: look-ahead, look-behind — `(?=)` and `(?<=)`
 
-`d(?=r)`       matches a d only if is followed by r, but r will not be part of the overall regex match 
+`d(?=r)`       matches a `d` only if is followed by `r`, but `r` will not be part of the overall regex match 
 
-`(?<=r)d`      matches a d only if is preceded by an r, but r will not be part of the overall regex match 
+`(?<=r)d`      matches a `d` only if is preceded by an `r`, but `r` will not be part of the overall regex match 
 
 ---
 
@@ -299,7 +300,7 @@ gsed -e 's/|/,/g'      \
 # sed - caveats 
 - GNU sed & BSD/POSIX sed differ 
 
-  Rule of thumb: use the modern one - _GNU_ sed 
+  Rule of thumb: use the modern one, i.e. _GNU_ sed 
   ```
   brew install gsed # on OSX
   ```
